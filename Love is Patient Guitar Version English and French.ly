@@ -58,7 +58,8 @@ verseMelody =  \relative c' {
 	\clef treble
 	\key bes \major
 	\set fontSize = #+1
-	\override Score.BarNumber #'break-visibility = #all-visible
+	% Reduce the number of bar number shown
+	% \override Score.BarNumber #'break-visibility = #all-visible
 	% Introduction
 	r1 r1 
 	% Love is patient
@@ -107,7 +108,7 @@ verseMelody =  \relative c' {
 	bes2 bes4 bes }
 	\alternative {
 		{ bes1 r1 }
-		{ bes2 ees8 ees4. \fermata | g8 g4. ~ g2 \fermata | f1 \bar "||" }
+		{ bes2 ees8 ees4. \fermata | g8 g4. ~ g2 \fermata | f1 \bar "|." }
 	            }
 	\break
 }
