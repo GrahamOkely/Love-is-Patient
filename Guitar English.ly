@@ -1,18 +1,23 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lilypond engraving by Graham Okely
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \version "2.16.0"  % necessary for upgrading to future LilyPond versions.
 \header{
 	title 			=	\markup \override #'(font-size . 8) "Love is Patient"
 	composer		=	"Music (c) Graham Okely 1988"
 	poet			=	"Lyrics 1st Corinthians 13:4-8"
 	tagline			=	"Graham.Vocal@Gmail.com"
+	copyright		=	"Graham.Vocal@Gmail.com"
 }
 \paper {
 	#(set-default-paper-size "a4")
-	head-separation 		=	3\mm
-	top-margin 			=	6\mm
-	system-system-spacing #'padding =	#2
-	ragged-bottom			=	##f
-	ragged-last-bottom		=	##t
-	system-count 			=	#9
+	head-separation 			=	3\mm
+	top-margin 				=	3\mm
+        system-system-spacing #'basic-distance 	= 	2\mm  
+        system-system-spacing #'padding  	= 	1\mm
+	ragged-bottom				=	##f
+	ragged-last-bottom			=	##t
+	% system-count 				=	#9
 myStaffSize = #20
 #(define fonts
  (make-pango-font-tree "Go Boom!" 
@@ -127,50 +132,7 @@ verseWords = \lyricmode {
     Love ne- ver ne- ver ne- ver fails.
     %======================================
 }
-frenchWords = \lyricmode {
-    \override LyricText #'font-size = #+3
-    % French
-    % Love is pat- ient
-    L'amour est pa- tient
-    % Love is kind
-    L'amour est bon
-    % It does not en- vy
-    il n'est pas en- vi-eux
-    % It does not boast
-    ne se vante pas 
-    % Love is not proud
-    L'amour n'est pas or-_guei-_lleux
-    % Love is not rude
-    Il-ne fait rien de_hon-_teux
-    % Love is not self seek- ing
-    L'amour n'est - pas ego- iste
-	    % It is not eas- i- ly a- n- gered
-	    % Il n'est pas fac- ile- ment irrite _ _  
-	    % (alt. Il ne s'irrite pas)
-    Il _ ne s'ir-_ri-_te _ _ pas  _ _  
-    % It keeps no rec- ord of wrongs
-    Il n'e- prouve pas de ran- cune
-	    % il ne garde aucun memoire de maux 
-	    % (alt. Il n'eprouve pas de rancune)
-    % vese 2
-    % Love does not
-    L'amour ne se
-    % de- light in ev- il
-    rejouit pas du mal _
-    % but re- joi- ces in the truth
-    Mais il se rejouit de la ve-_ri-_te
-    % It al- ways pro- tects
-    Il pro- tege tou- jours
-    % Al- ways trusts
-    se fie toujours
-    % Al- ways hoes
-    es-pere tou- jours
-    % Al-  al- ways per- sev- eres
-    per- se- vere tou- _ jours
-    % Love ne- ver fails
-    L'amour est sans fin
-    L'amour est sans est sans est sans fin.
-}
+
 
 \bookpart {
        \score {
@@ -182,18 +144,5 @@ frenchWords = \lyricmode {
        }
 }
 
-% French
-\bookpart  {
-      \header{
-          title 		=	\markup \override #'(font-size . 8) "L'amour est patient"
-          translator_to_French 	=	" (French by Andrew Tanner)"
-      }
-      \score {
-            <<
-                \new ChordNames \guitarChords
-                \new Voice = "one" \verseMelody
-                \new Lyrics \lyricsto "one" \frenchWords
-            >>
-      }
+
 % --format=png -dresolution=300
-}
