@@ -1,3 +1,4 @@
+% Snip for small sections of code
 {
 
     \repeat volta 2 {
