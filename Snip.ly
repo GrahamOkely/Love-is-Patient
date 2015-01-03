@@ -1,24 +1,13 @@
+{
 % Snip for small sections of code
-{
-
-    \repeat volta 2 {
-    % Love never fails
-    bes'2 bes'4 bes'( }
-    \alternative {
-            { bes'1 r1 }
-            { bes'2)  ees''8 ees''4. \fermata | g''8 g''4. ~ g''2 \fermata | f''1 \bar "|." }
-                }
-    \break
-    
-}
-
-{
-\repeat volta 2 {
-% Love never fails
-bes'2 bes'4 bes'~ }
-\alternative {
-{ bes'1 r1 }
-{ bes'2  ees''8 ees''4. \fermata | g''8 g''4. ~ g''2 \fermata | f''1 \bar "|." }
-}
-\break
-}
+	% always persevers
+	d4 ( fis) a4 a
+	bes4 a g2 \break
+        bes2 bes4 bes4 bes1 r1
+        bes2 bes4 bes4 ~ 
+        bes2 ees8 ees4. \fermata | 
+        g8 g4. ~ g2 \fermata | 
+        f1 \bar "|." 
+	\break
+	
+	}
