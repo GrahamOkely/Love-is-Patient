@@ -1,25 +1,18 @@
 \version "2.16.0"  % necessary for upgrading to future LilyPond versions.
 \header{
-	title 		=	"Love is Patient"
-	subtitle		=	""
-	subsubtitle     	=       "" % #(strftime "Edition Date: %B %d, %Y  %X" (localtime (current-time)))
-	composer		=	"Music (c) Graham Okely 1988 (French by Andrew Tanner)"
-	poet		=	"Lyrics 1st Corinthians 13:4-8"
-	tagline		=	" " %Typeset by Graham Okely"
+	title 			=	\markup \override #'(font-size . 8) "Love is Patient"
+	composer		=	"Music (c) Graham Okely 1988"
+	poet			=	"Lyrics 1st Corinthians 13:4-8"
+	tagline			=	"Graham.Vocal@Gmail.com"
 }
 \paper {
 	#(set-default-paper-size "a4")
 	head-separation 		=	3\mm
-	top-margin 		=	6\mm
-	system-system-spacing		=	52\mm
-	system-system-spacing #'padding 	=	#0
-	% evenHeaderMarkup  	=	""
-	ragged-bottom		=	##f
-	ragged-last-bottom	=	##t
-	% scoreTitleMarkup  	=	""
-	% system-count 		=	#9
-	% oddHeaderMarkup   	=	""
-	% annotate-spacing 	=	##t
+	top-margin 			=	6\mm
+	system-system-spacing #'padding =	#2
+	ragged-bottom			=	##f
+	ragged-last-bottom		=	##t
+	system-count 			=	#9
 myStaffSize = #20
 #(define fonts
  (make-pango-font-tree "Go Boom!" 
@@ -28,7 +21,6 @@ myStaffSize = #20
 (/ myStaffSize 20)))
 }
 guitarChords = \chordmode {
-% #(set-global-staff-size 16)
   % Introduction
   \override ChordName   #'font-size = #+2
   \set majorSevenSymbol = "maj7"
@@ -48,7 +40,7 @@ guitarChords = \chordmode {
   d1:7 g1:m
   % Repeated tag
   bes2 c:m7 bes1 f:7
-  c:m7 c:m7
+  bes2 c:m7 c1:m7 c1:m7
   bes1
   }
 verseMelody =  \relative c' {
@@ -58,8 +50,6 @@ verseMelody =  \relative c' {
 	\clef treble
 	\key bes \major
 	\set fontSize = #+1
-	% Reduce the number of bar number shown
-	% \override Score.BarNumber #'break-visibility = #all-visible
 	% Introduction
 	r1 r1 
 	% Love is patient
@@ -79,10 +69,9 @@ verseMelody =  \relative c' {
 	% It is not easily angered
 	d8 d fis4 a8 a a4 bes4\( a g4.\) g8
 	% It keeps no record of wrongs
-	bes4 bes bes8 bes bes4 bes1 % \bar ":|"
+	bes4 bes bes8 bes bes4 bes1
 	%======================================
 	% Break
-	\set Score.currentBarNumber = #38
 	r1 r1
 	%======================================
 	% verse 2
@@ -103,17 +92,15 @@ verseMelody =  \relative c' {
 	% always persevers
 	d4 ( fis) a4 a
 	bes4 a g2 \break
-	\repeat volta 2 {
-	% Love never fails
-	bes2 bes4 bes }
-	\alternative {
-		{ bes1 r1 }
-		{ bes2 ees8 ees4. \fermata | g8 g4. ~ g2 \fermata | f1 \bar "|." }
-	            }
+        bes2 bes4 bes4 bes1 r1
+        bes2 bes4 bes4 ~ 
+        bes2 ees8 ees4. \fermata | 
+        g8 g4. ~ g2 \fermata | 
+        f1 \bar "|." 
 	\break
 }
 verseWords = \lyricmode {
-   % \override LyricText #'font-size = #+4
+    \override LyricText #'font-size = #+3
     %======================================
     % Verse 1
     Love is pat- ient
@@ -137,11 +124,11 @@ verseWords = \lyricmode {
     Al- ways hopes
     Al-  al- ways per- sev- eres
     Love ne- ver fails
-    - ne- ver ne- ver fails.
+    Love ne- ver ne- ver ne- ver fails.
     %======================================
 }
 frenchWords = \lyricmode {
-    % \override LyricText #'font-size = #+3
+    \override LyricText #'font-size = #+3
     % French
     % Love is pat- ient
     L'amour est pa- tient
@@ -154,7 +141,7 @@ frenchWords = \lyricmode {
     % Love is not proud
     L'amour n'est pas or-_guei-_lleux
     % Love is not rude
-    L'amour fait rien de_hon-_teux
+    Il-ne fait rien de_hon-_teux
     % Love is not self seek- ing
     L'amour n'est - pas ego- iste
 	    % It is not eas- i- ly a- n- gered
@@ -177,26 +164,36 @@ frenchWords = \lyricmode {
     % Al- ways trusts
     se fie toujours
     % Al- ways hoes
-    espere tou- jours
+    es-pere tou- jours
     % Al-  al- ways per- sev- eres
     per- se- vere tou- _ jours
     % Love ne- ver fails
     L'amour est sans fin
-    - est sans est sans fin.
+    L'amour est sans est sans est sans fin.
 }
-\score {
-<<
-    \new ChordNames \guitarChords
-    \new Voice = "one" \verseMelody
-    \new Lyrics \lyricsto "one" \verseWords
-    \new Lyrics \lyricsto "one" \frenchWords
->>
-\layout { % indent = #0 
-  \context {
-      %\Score
-      %proportionalNotationDuration = #(ly:make-moment 1 4)
-    }
-} 
-\midi { }
+
+\bookpart {
+       \score {
+       <<
+           \new ChordNames \guitarChords
+           \new Voice = "one" \verseMelody
+           \new Lyrics \lyricsto "one" \verseWords
+       >>
+       }
 }
+
+% French
+\bookpart  {
+      \header{
+          title 		=	\markup \override #'(font-size . 8) "L'amour est patient"
+          translator_to_French 	=	" (French by Andrew Tanner)"
+      }
+      \score {
+            <<
+                \new ChordNames \guitarChords
+                \new Voice = "one" \verseMelody
+                \new Lyrics \lyricsto "one" \frenchWords
+            >>
+      }
 % --format=png -dresolution=300
+}
