@@ -3,7 +3,7 @@ Love-is-Patient
 
 Song about love
 
-I wrote this song in 1988 to encourage my children to understand the various aspects of love.
+I wrote this song in 1988 to teach the various aspects of love.
 Usually these words (1 Corinthians 13:4-8) are spoken at weddings but I wanted to give them more visability.
 So I wrote this tune, which is supposed to be a bright happy style, to help them remember it.
 
